@@ -8,7 +8,7 @@ var semver = require('semver');
 var GitHubApi = require('github');
 var argv = require('minimist')(process.argv.slice(2));
 
-var pkgPath = path.join(__dirname, './package.json');
+var pkgPath = path.join(process.cwd(), './package.json');
 var pkg = require(pkgPath);
 
 var username = argv.u || argv.user || argv.username;
@@ -18,11 +18,16 @@ if (!username || !password) {
   throw new Error('username and password required');
 }
 
-async.forEach(Object.keys(pkg.privateDependencies),
+async.forEach(Object.keys(pkg.privateDependencies) || [],
   function (name, done) {
     getTarbar(name, pkg.privateDependencies[name], function(err, release) {
       var url = util.format('https://%s:%s@github.com/%s/%s/archive/%s.tar.gz',
         username, password, release.org, release.repo, release.version);
+      
+      // if `dependencies` not exists
+      if (typeof pkg.dependencies !== 'object') {
+        pkg.dependencies = {};
+      }
       pkg.dependencies[release.repo] = url;
       done(null);
     });

@@ -1,6 +1,6 @@
 {
   "name": "npm-private-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "NPM Extend Tool for your github private repo",
   "main": "index.js",
   "scripts": {
