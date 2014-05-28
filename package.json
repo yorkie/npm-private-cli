@@ -1,0 +1,35 @@
+{
+  "name": "npm-private-cli",
+  "version": "0.0.3",
+  "description": "NPM Extend Tool for your github private repo",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape tests/*.js"
+  },
+  "bin": {
+    "npm-private": "bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yorkie/npm-private-cli"
+  },
+  "keywords": [
+    "npm",
+    "private"
+  ],
+  "author": "Yorkie Neil <yorkiefixer@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yorkie/npm-private-cli/issues"
+  },
+  "homepage": "https://github.com/yorkie/npm-private-cli",
+  "dependencies": {
+    "github": "~0.1.16",
+    "semver": "^2.3.0",
+    "minimist": "^0.1.0",
+    "async": "^0.9.0"
+  },
+  "privateDependencies": {
+    "MangroveTech/tower-franky": "~0.0.1"
+  }
+}
